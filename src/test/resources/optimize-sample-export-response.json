@@ -1,0 +1,214 @@
+{
+  "searchRequestId": "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFm9KcUVHaHItU29lLS1xTnBwN3N6UUEAAAAAAAcRexYzT0hOQ05WSFNXYV9tWTJnLUlmQ2Jn",
+  "numberOfRecordsInResponse": 2,
+  "totalNumberOfRecords": 3753,
+  "reportId": "781985ac-1683-4a0f-9668-0d3576bccb3e",
+  "data": [
+    {
+      "processDefinitionKey": "customer_onboarding_en",
+      "processDefinitionId": "customer_onboarding_en:1:da435926-a005-11ec-b9ad-0242ac120002",
+      "processInstanceId": "dbcb09e5-a005-11ec-b9ad-0242ac120002",
+      "counts": {
+        "incidents": 0,
+        "openIncidents": 0,
+        "userTasks": 1
+      },
+      "flowNodeDurations": {
+        "BusinessRuleTask_CheckApplicationAutomatically": {
+          "name": "Check application automatically",
+          "value": 8
+        },
+        "StartEvent_1": {
+          "name": "Application received",
+          "value": 1
+        },
+        "UserTask_DecideOnApplication": {
+          "name": "Decide on application",
+          "value": 1968541848
+        },
+        "ServiceTask_0orgm7r": {
+          "name": null,
+          "value": 2
+        },
+        "ExclusiveGatewayPruefung": {
+          "name": "Risk?",
+          "value": 0
+        }
+      },
+      "businessKey": "A-134",
+      "startDate": "2023-10-10T02:05:37.444+0000",
+      "endDate": null,
+      "duration": 48502869,
+      "engineName": "zeebe-record",
+      "tenantId": null,
+      "variables": {
+        "applicantName": "Gentle Driver",
+        "application": "<<OBJECT_VARIABLE_VALUE>>",
+        "application.applicant.age": "29.0",
+        "application.applicant.birthday": "7.31721956443E11",
+        "application.applicant.email": "trashcan@camunda.org",
+        "application.applicant.gender": "Mann",
+        "application.applicant.name": "Gentle Driver",
+        "application.applicant.score": "93.0",
+        "application.applicationNumber": "A-6991",
+        "application.category": "Premium Package",
+        "application.contractNumber": "",
+        "application.corporation": "Camunbankia",
+        "application.employment": "Self-employed",
+        "application.premium": "0,00 €",
+        "application.premiumInCent": "0.0",
+        "application.priceIndication": "320,00 €",
+        "application.priceIndicationInCent": "32000.0",
+        "application.product": "super cool product",
+        "applicationNumber": "A-6991",
+        "approved": "",
+        "category": "",
+        "corporation": "Camunbankia",
+        "documentReferenceId": "",
+        "mailBody": "",
+        "mailSubject": "",
+        "requestedDocumentDescription": "",
+        "riskLevel": "yellow",
+        "risks": "Irregular And Possibly Lack Of Income, Not Trustworthy",
+        "risks._listSize": "2",
+        "score": "93",
+        "uiBaseUrl": "http://example.com/"
+      },
+      "flowNodeInstances": [
+        {
+          "id": "dbccb7b1-a005-11ec-b9ad-0242ac120002",
+          "name": "Check application automatically",
+          "startDate": "2023-09-17T20:44:58.455+0000",
+          "endDate": "2023-09-17T20:44:58.463+0000"
+        },
+        {
+          "id": "ServiceTask_0orgm7r:dbcc698d-a005-11ec-b9ad-0242ac120002",
+          "name": "ServiceTask_0orgm7r",
+          "startDate": "2023-09-17T20:44:58.453+0000",
+          "endDate": "2023-09-17T20:44:58.455+0000"
+        },
+        {
+          "id": "ExclusiveGatewayPruefung:dbcdf047-a005-11ec-b9ad-0242ac120002",
+          "name": "Risk?",
+          "startDate": "2023-09-17T20:44:58.463+0000",
+          "endDate": "2023-09-17T20:44:58.463+0000"
+        },
+        {
+          "id": "StartEvent_1:dbcb3106-a005-11ec-b9ad-0242ac120002",
+          "name": "Application received",
+          "startDate": "2023-09-17T20:44:58.445+0000",
+          "endDate": "2023-09-17T20:44:58.446+0000"
+        },
+        {
+          "id": "dbcdf049-a005-11ec-b9ad-0242ac120002",
+          "name": "Decide on application",
+          "startDate": "2023-09-17T20:44:58.465+0000",
+          "endDate": null
+        }
+      ]
+    },
+    {
+      "processDefinitionKey": "customer_onboarding_en",
+      "processDefinitionId": "customer_onboarding_en:1:da435926-a005-11ec-b9ad-0242ac120002",
+      "processInstanceId": "dbac374f-a005-11ec-b9ad-0242ac120002",
+      "counts": {
+        "incidents": 0,
+        "openIncidents": 0,
+        "userTasks": 1
+      },
+      "flowNodeDurations": {
+        "BusinessRuleTask_CheckApplicationAutomatically": {
+          "name": "Check application automatically",
+          "value": 7
+        },
+        "StartEvent_1": {
+          "name": "Application received",
+          "value": 1
+        },
+        "UserTask_DecideOnApplication": {
+          "name": "Decide on application",
+          "value": 1968542051
+        },
+        "ServiceTask_0orgm7r": {
+          "name": null,
+          "value": 2
+        },
+        "ExclusiveGatewayPruefung": {
+          "name": "Risk?",
+          "value": 0
+        }
+      },
+      "businessKey": "A-129",
+      "startDate": "2023-10-10T02:05:37.242+0000",
+      "endDate": null,
+      "duration": 48503071,
+      "engineName": "zeebe-record",
+      "tenantId": null,
+      "variables": {
+        "applicantName": "Gentle Driver",
+        "application": "<<OBJECT_VARIABLE_VALUE>>",
+        "application.applicant.age": "47.0",
+        "application.applicant.birthday": "1.6364195624E11",
+        "application.applicant.email": "trashcan@camunda.org",
+        "application.applicant.gender": "Mann",
+        "application.applicant.name": "Gentle Driver",
+        "application.applicant.score": "82.0",
+        "application.applicationNumber": "A-6983",
+        "application.category": "Premium Package",
+        "application.contractNumber": "",
+        "application.corporation": "Camundanzia",
+        "application.employment": "Salaried",
+        "application.premium": "0,00 €",
+        "application.premiumInCent": "0.0",
+        "application.priceIndication": "320,00 €",
+        "application.priceIndicationInCent": "32000.0",
+        "application.product": "super cool product",
+        "applicationNumber": "A-6983",
+        "approved": "",
+        "category": "",
+        "corporation": "Camundanzia",
+        "documentReferenceId": "",
+        "mailBody": "",
+        "mailSubject": "",
+        "requestedDocumentDescription": "",
+        "riskLevel": "yellow",
+        "risks": "Too Low Income",
+        "risks._listSize": "1",
+        "score": "82",
+        "uiBaseUrl": "http://example.com/"
+      },
+      "flowNodeInstances": [
+        {
+          "id": "ServiceTask_0orgm7r:dbad6fe7-a005-11ec-b9ad-0242ac120002",
+          "name": "ServiceTask_0orgm7r",
+          "startDate": "2023-09-17T20:44:58.250+0000",
+          "endDate": "2023-09-17T20:44:58.252+0000"
+        },
+        {
+          "id": "StartEvent_1:dbac5e70-a005-11ec-b9ad-0242ac120002",
+          "name": "Application received",
+          "startDate": "2023-09-17T20:44:58.243+0000",
+          "endDate": "2023-09-17T20:44:58.244+0000"
+        },
+        {
+          "id": "ExclusiveGatewayPruefung:dbaef69f-a005-11ec-b9ad-0242ac120002",
+          "name": "Risk?",
+          "startDate": "2023-09-17T20:44:58.260+0000",
+          "endDate": "2023-09-17T20:44:58.260+0000"
+        },
+        {
+          "id": "dbade51b-a005-11ec-b9ad-0242ac120002",
+          "name": "Check application automatically",
+          "startDate": "2023-09-17T20:44:58.253+0000",
+          "endDate": "2023-09-17T20:44:58.260+0000"
+        },
+        {
+          "id": "dbaef6a1-a005-11ec-b9ad-0242ac120002",
+          "name": "Decide on application",
+          "startDate": "2023-09-17T20:44:58.262+0000",
+          "endDate": null
+        }
+      ]
+    }
+  ]
+}
