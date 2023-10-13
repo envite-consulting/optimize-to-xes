@@ -1,4 +1,4 @@
-package de.luc.weinbrecht.optimzetoxes.optimize
+package de.luc.weinbrecht.optimzetoxes.optimizeexport.domain.model
 
 data class OptimizeData(
     var data: List<ProcessInstance> = listOf()

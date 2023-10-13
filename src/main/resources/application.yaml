@@ -1,6 +1,8 @@
+spring:
+  main:
+    web-application-type: none
+
 optimize:
   baseUrl: <optimize-base-url>
   bearerToken: <token>
   reportId: <report-id>
-
-server.port: 9090

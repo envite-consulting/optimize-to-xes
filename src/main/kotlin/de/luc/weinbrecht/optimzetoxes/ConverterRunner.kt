@@ -1,18 +1,18 @@
 package de.luc.weinbrecht.optimzetoxes
 
-import de.luc.weinbrecht.optimzetoxes.optimize.DownloadService
-import de.luc.weinbrecht.optimzetoxes.optimize.toXes
+import de.luc.weinbrecht.optimzetoxes.optimizeexport.adapter.out.optimize.OptimizeRawDataQueryService
+import de.luc.weinbrecht.optimzetoxes.xesmapping.toXes
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 
 @Component
 class ConverterRunner(
-    private val downloadService: DownloadService,
-): CommandLineRunner {
+    private val optimizeRawDataQueryService: OptimizeRawDataQueryService,
+): CommandLineRunner, Logging {
 
     override fun run(vararg args: String?) {
-        val result = downloadService.fetchData()
-        result.toXes()
-        println(result)
+        val result = optimizeRawDataQueryService.queryData()
+        log().info("Fetch data {}", result)
+        log().info("Converting raw data to XES: {}", result.toXes())
     }
 }

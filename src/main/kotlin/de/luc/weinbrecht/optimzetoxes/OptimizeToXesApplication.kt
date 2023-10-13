@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class OptimzeToXesApplication
+class OptimizeToXesApplication
 
 fun main(args: Array<String>) {
-	runApplication<OptimzeToXesApplication>(*args)
+	runApplication<OptimizeToXesApplication>(*args)
 }
