@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>de.luc.weinbrecht</groupId>
+	<groupId>de.envite.greenbpm</groupId>
 	<artifactId>optimize-to-xes</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>optimze-to-xes</name>
