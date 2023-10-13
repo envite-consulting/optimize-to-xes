@@ -20,6 +20,14 @@
 		<kotlin.version>1.9.10</kotlin.version>
 	</properties>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/envite-consulting/optimize-to-xes</url>
+		</repository>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.deckfour</groupId>
