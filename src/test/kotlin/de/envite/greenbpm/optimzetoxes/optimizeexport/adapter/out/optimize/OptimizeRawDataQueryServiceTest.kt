@@ -1,6 +1,10 @@
 package de.envite.greenbpm.optimzetoxes.optimizeexport.adapter.out.optimize
 
+import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.collections.shouldContainOnly
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.collections.shouldNotHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
@@ -47,10 +51,19 @@ class OptimizeRawDataQueryServiceTest {
     fun should_query_data() {
         enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-export-response.json")
 
+        val expectedProcessDefinitionKey = "customer_onboarding_en"
+
         val result = classUnderTest.queryData()
 
         result shouldNotBe null
-        result.data.size shouldBe 2
+        result.data shouldHaveSize  2
+        result.data.map { it.processDefinitionKey }.shouldContainOnly(expectedProcessDefinitionKey)
+        assertSoftly {
+            result.data[0].businessKey shouldBe "A-07022"
+            result.data[1].businessKey shouldBe "A-07018"
+            result.data.map { it.flowNodeInstances } shouldNotHaveSize 0
+            result.data.map { it.variables } shouldNotHaveSize 0
+        }
         // TODO: Test more fields
     }
 
