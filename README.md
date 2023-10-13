@@ -12,6 +12,8 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
 
 Coming soon
 
+![Optimize CCR PPM Cycle](./assets/ppm-cycle.png)
+
 # 🚀Getting Started
 
 ```shell
