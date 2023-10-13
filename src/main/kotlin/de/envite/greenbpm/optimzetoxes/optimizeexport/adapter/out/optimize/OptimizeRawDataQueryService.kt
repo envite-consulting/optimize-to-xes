@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
 @Service
-class OptimizeRawDataQueryService(
+internal class OptimizeRawDataQueryService(
     private val webClient: WebClient,
     private val optimizeClientProperties: OptimizeClientProperties
 ): RawDataQuery {

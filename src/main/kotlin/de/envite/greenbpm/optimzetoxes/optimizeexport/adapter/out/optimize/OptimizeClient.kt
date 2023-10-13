@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient
 private class OptimizeClient {
 
     // TODO: Get token by e.g. using Spring Boot OAuth Client
+    // But keep in mind it should work with Optimize in a C7 set-up as well
     @Bean
     fun configureWebClient(optimizeClientProperties: OptimizeClientProperties): WebClient {
         return WebClient.builder()
