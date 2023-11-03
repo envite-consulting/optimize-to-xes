@@ -13,7 +13,6 @@ class OptimizeToXesApplicationTest {
 
     private val optimizeDataQueryMock: OptimizeDataQuery = mockk()
 
-
     private lateinit var classUnderTest: OptimizeToXesApplication
     @BeforeEach
     fun setUp() {
