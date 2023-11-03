@@ -4,6 +4,7 @@ import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.FlowNodeInsta
 import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.OptimizeData
 import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.ProcessInstance
 import de.envite.greenbpm.optimzetoxes.optimizeexport.usecase.`in`.OptimizeDataQuery
+import de.envite.greenbpm.optimzetoxes.xesmapping.XesMappingConfigurationProperties
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
@@ -21,16 +22,11 @@ class OptimizeToXesApplicationTest {
     @Nested
     inner class ExceptionHandling {
 
-        @BeforeEach
-        fun setUp() {
-            classUnderTest = OptimizeToXesApplication(optimizeDataQueryMock)
-        }
-
         @Test
         fun should_throw_if_no_filename_provided() {
             assertThrows<IllegalArgumentException> {
-                classUnderTest.run()
-            }.message shouldBe "You must provide a filename for the resulting XML."
+                OptimizeToXesApplication(optimizeDataQueryMock, XesMappingConfigurationProperties(""))
+            }.message shouldBe "You must provide a filename for the resulting XML which ends with '.xml'"
         }
     }
 
@@ -39,7 +35,7 @@ class OptimizeToXesApplicationTest {
 
         @BeforeEach
         fun setUp() {
-            classUnderTest = OptimizeToXesApplication(optimizeDataQueryMock, "xes-output.xml")
+            classUnderTest = OptimizeToXesApplication(optimizeDataQueryMock, XesMappingConfigurationProperties("xes-output.xml"))
         }
 
         @Test

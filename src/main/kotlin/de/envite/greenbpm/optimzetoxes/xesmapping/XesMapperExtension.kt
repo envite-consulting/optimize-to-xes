@@ -11,6 +11,7 @@ import org.deckfour.xes.model.XLog
 import org.deckfour.xes.model.XTrace
 import org.deckfour.xes.model.impl.XAttributeLiteralImpl
 import org.deckfour.xes.model.impl.XAttributeMapImpl
+import org.slf4j.Logger
 import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.util.*
@@ -21,7 +22,9 @@ private const val ORG_GROUP = "org:group"
 private val factory = XFactoryRegistry.instance().currentDefault()
 
 // TODO: Restriction: Single Process-Definition
-fun OptimizeData.toXes(): XLog {
+fun OptimizeData.toXes(logger: Logger? = null): XLog {
+    logger?.debug("Converting JSON Data to XES")
+
     val log = factory.createLog()
     val logAttributes: XAttributeMap = XAttributeMapImpl()
     log.attributes = logAttributes
@@ -52,7 +55,6 @@ fun ProcessInstance.toXes(): XTrace {
 }
 
 fun FlowNodeInstance.toXes(processInstanceId: String, variables: Map<String, String>): List<XEvent> {
-    // TODO: Add variables to each event
     val startEvent: XEvent = createEvent(name, processInstanceId, variables, Lifecycle.START, startDate)
     val endEvent: XEvent? = endDate?.let { createEvent(name, processInstanceId, variables, Lifecycle.COMPLETE, it) }
     val result = mutableListOf(startEvent)

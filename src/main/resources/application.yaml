@@ -6,3 +6,6 @@ optimize:
   baseUrl: <optimize-base-url>
   bearerToken: <token>
   reportId: <report-id>
+
+xes-mapping:
+  filename: <xes-result-filename-or-path>.xml
