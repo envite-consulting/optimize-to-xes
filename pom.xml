@@ -11,7 +11,7 @@
 
 	<groupId>de.envite.greenbpm</groupId>
 	<artifactId>optimize-to-xes</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>optimize-to-xes</name>
 	<description>Convert the Camunda Optimize ML Export to XES</description>
 
