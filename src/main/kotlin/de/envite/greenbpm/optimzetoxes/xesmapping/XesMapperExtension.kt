@@ -55,6 +55,7 @@ fun ProcessInstance.toXes(): XTrace {
 }
 
 fun FlowNodeInstance.toXes(processInstanceId: String, variables: Map<String, String>): List<XEvent> {
+    // TODO: If startDate and endDate are equal we violate XES
     val startEvent: XEvent = createEvent(name, processInstanceId, variables, Lifecycle.START, startDate)
     val endEvent: XEvent? = endDate?.let { createEvent(name, processInstanceId, variables, Lifecycle.COMPLETE, it) }
     val result = mutableListOf(startEvent)

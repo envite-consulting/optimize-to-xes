@@ -1,252 +1,212 @@
 {
-  "searchRequestId": "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFnJUZVNITXJVVFVxb2Y2a244MGhKUEEAAAAAAEG-GRYzT0hOQ05WSFNXYV9tWTJnLUlmQ2Jn",
+  "searchRequestId": "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFkc4X2NweTZWUWZtSGQxZ1dlc1pKM0EAAAAAALMytxZxY2M3QUVNWFNzZVlCWXhlSl9hbEZB",
   "numberOfRecordsInResponse": 2,
-  "totalNumberOfRecords": 3614,
-  "reportId": "781985ac-1683-4a0f-9668-0d3576bccb3e",
+  "totalNumberOfRecords": 3753,
+  "reportId": "7c70a5ef-efec-4e05-ada7-0ca7f10c5ac0",
   "data": [
     {
       "processDefinitionKey": "customer_onboarding_en",
-      "processDefinitionId": "customer_onboarding_en:1:dc741b75-a005-11ec-b9ad-0242ac120002",
-      "processInstanceId": "8f331457-a006-11ec-b9ad-0242ac120002",
+      "processDefinitionId": "customer_onboarding_en:1:da435926-a005-11ec-b9ad-0242ac120002",
+      "processInstanceId": "dbcb09e5-a005-11ec-b9ad-0242ac120002",
       "counts": {
         "incidents": 0,
         "openIncidents": 0,
-        "userTasks": 0
+        "userTasks": 1
       },
       "flowNodeDurations": {
         "BusinessRuleTask_CheckApplicationAutomatically": {
-          "name": "Check application automatically",
-          "value": 0
-        },
-        "SendTask_SendPolicy": {
-          "name": "Send confirmation",
-          "value": 1
+          "name": null,
+          "value": 8
         },
         "StartEvent_1": {
-          "name": "Application received",
-          "value": 0
+          "name": null,
+          "value": 1
         },
-        "EndEvent_ApplicationIssued": {
-          "name": "Application  issued",
-          "value": 0
+        "UserTask_DecideOnApplication": {
+          "name": null,
+          "value": 1410691968
         },
-        "ServiceTask_DeliverPolicy": {
-          "name": "Deliver confirmation",
-          "value": 0
+        "ServiceTask_0orgm7r": {
+          "name": null,
+          "value": 2
         },
         "ExclusiveGatewayPruefung": {
-          "name": "Risk?",
-          "value": 0
-        },
-        "ServiceTask_0tixwo5": {
-          "name": "Get credit score",
+          "name": null,
           "value": 0
         }
       },
-      "businessKey": "A-07022",
-      "startDate": "2023-10-10T22:52:26.394+0000",
-      "endDate": "2023-10-10T22:52:26.397+0000",
-      "duration": 3,
+      "businessKey": "A-134",
+      "startDate": "2023-11-02T17:37:37.444+0000",
+      "endDate": null,
+      "duration": 58209989,
       "engineName": "zeebe-record",
-      "tenantId": null,
+      "tenantId": "<default>",
       "variables": {
-        "applicantName": "Yankee Russell",
+        "applicantName": "Gentle Driver",
         "application": "<<OBJECT_VARIABLE_VALUE>>",
-        "application.applicant.age": "36.0",
-        "application.applicant.birthday": "5.10797457438E11",
-        "application.applicant.email": "yankeerussell@hotmail.com",
-        "application.applicant.gender": "male",
-        "application.applicant.name": "Yankee Russell",
-        "application.applicant.score": "97.0",
-        "application.applicationNumber": "A-6932197",
+        "application.applicant.age": "29.0",
+        "application.applicant.birthday": "7.31721956443E11",
+        "application.applicant.email": "trashcan@camunda.org",
+        "application.applicant.gender": "Mann",
+        "application.applicant.name": "Gentle Driver",
+        "application.applicant.score": "93.0",
+        "application.applicationNumber": "A-6991",
         "application.category": "Premium Package",
-        "application.contractNumber": "2022-03-10T00:10:57.447+0000",
+        "application.contractNumber": "",
         "application.corporation": "Camunbankia",
-        "application.employment": "Salaried",
-        "application.premium": "0,00 €",
-        "application.premiumInCent": "0.0",
-        "application.priceIndication": "320,00 €",
-        "application.priceIndicationInCent": "32000.0",
-        "application.product": "super cool product",
-        "applicationNumber": "A-6932197",
-        "approved": "",
-        "category": "Premium Package",
-        "corporation": "Camunbankia",
-        "documentReferenceId": "",
-        "mailBody": "Dear Yankee Russell.\n\nWe happily inform you that your request was accepted.\n\nPlease check the key facts: \n- Application Number: A-6932197\n- Premium per anno: 0,00 €\n- Product: super cool product\n\nKind regards,\nCamunbankia.",
-        "mailSubject": "Your request was issued",
-        "requestedDocumentDescription": "",
-        "riskLevel": "green",
-        "risks": "<<OBJECT_VARIABLE_VALUE>>",
-        "risks._listSize": "0",
-        "score": "97",
-        "uiBaseUrl": ""
-      },
-      "flowNodeInstances": [
-        {
-          "id": "EndEvent_ApplicationIssued:8f35aca4-a006-11ec-b9ad-0242ac120002",
-          "name": "Application  issued",
-          "startDate": "2023-09-17T16:42:23.397+0000",
-          "endDate": "2023-09-17T16:42:23.397+0000"
-        },
-        {
-          "id": "8f33b0ad-a006-11ec-b9ad-0242ac120002",
-          "name": "Check application automatically",
-          "startDate": "2023-09-17T16:42:23.395+0000",
-          "endDate": "2023-09-17T16:42:23.395+0000"
-        },
-        {
-          "id": "ServiceTask_DeliverPolicy:8f347410-a006-11ec-b9ad-0242ac120002",
-          "name": "Deliver confirmation",
-          "startDate": "2023-09-17T16:42:23.395+0000",
-          "endDate": "2023-09-17T16:42:23.395+0000"
-        },
-        {
-          "id": "ExclusiveGatewayPruefung:8f34740f-a006-11ec-b9ad-0242ac120002",
-          "name": "Risk?",
-          "startDate": "2023-09-17T16:42:23.395+0000",
-          "endDate": "2023-09-17T16:42:23.395+0000"
-        },
-        {
-          "id": "SendTask_SendPolicy:8f351059-a006-11ec-b9ad-0242ac120002",
-          "name": "Send confirmation",
-          "startDate": "2023-09-17T16:42:23.396+0000",
-          "endDate": "2023-09-17T16:42:23.397+0000"
-        },
-        {
-          "id": "StartEvent_1:8f33145d-a006-11ec-b9ad-0242ac120002",
-          "name": "Application received",
-          "startDate": "2023-09-17T16:42:23.394+0000",
-          "endDate": "2023-09-17T16:42:23.394+0000"
-        },
-        {
-          "id": "ServiceTask_0tixwo5:8f338999-a006-11ec-b9ad-0242ac120002",
-          "name": "Get credit score",
-          "startDate": "2023-09-17T16:42:23.395+0000",
-          "endDate": "2023-09-17T16:42:23.395+0000"
-        }
-      ]
-    },
-    {
-      "processDefinitionKey": "customer_onboarding_en",
-      "processDefinitionId": "customer_onboarding_en:1:dc741b75-a005-11ec-b9ad-0242ac120002",
-      "processInstanceId": "8f15058f-a006-11ec-b9ad-0242ac120002",
-      "counts": {
-        "incidents": 0,
-        "openIncidents": 0,
-        "userTasks": 0
-      },
-      "flowNodeDurations": {
-        "BusinessRuleTask_CheckApplicationAutomatically": {
-          "name": "Check application automatically",
-          "value": 0
-        },
-        "SendTask_SendPolicy": {
-          "name": "Send confirmation",
-          "value": 1
-        },
-        "StartEvent_1": {
-          "name": "Application received",
-          "value": 0
-        },
-        "EndEvent_ApplicationIssued": {
-          "name": "Application  issued",
-          "value": 0
-        },
-        "ExclusiveGatewayPruefung": {
-          "name": "Risk?",
-          "value": 0
-        },
-        "ServiceTask_DeliverPolicy": {
-          "name": "Deliver confirmation",
-          "value": 0
-        },
-        "ServiceTask_0tixwo5": {
-          "name": "Get credit score",
-          "value": 0
-        }
-      },
-      "businessKey": "A-07018",
-      "startDate": "2023-10-10T20:36:01.475+0000",
-      "endDate": "2023-10-10T20:36:01.478+0000",
-      "duration": 3,
-      "engineName": "zeebe-record",
-      "tenantId": null,
-      "variables": {
-        "applicantName": "Merill Lee",
-        "application": "<<OBJECT_VARIABLE_VALUE>>",
-        "application.applicant.age": "32.0",
-        "application.applicant.birthday": "6.3702785724E11",
-        "application.applicant.email": "merilllee@hotmail.com",
-        "application.applicant.gender": "male",
-        "application.applicant.name": "Merill Lee",
-        "application.applicant.score": "97.0",
-        "application.applicationNumber": "A-6932174",
-        "application.category": "Standard Package",
-        "application.contractNumber": "2022-03-10T00:10:57.249+0000",
-        "application.corporation": "Camuntelia",
         "application.employment": "Self-employed",
         "application.premium": "0,00 €",
         "application.premiumInCent": "0.0",
         "application.priceIndication": "320,00 €",
         "application.priceIndicationInCent": "32000.0",
         "application.product": "super cool product",
-        "applicationNumber": "A-6932174",
+        "applicationNumber": "A-6991",
         "approved": "",
-        "category": "Standard Package",
-        "corporation": "Camuntelia",
+        "category": "",
+        "corporation": "Camunbankia",
         "documentReferenceId": "",
-        "mailBody": "Dear Merill Lee.\n\nWe happily inform you that your request was accepted.\n\nPlease check the key facts: \n- Application Number: A-6932174\n- Premium per anno: 0,00 €\n- Product: super cool product\n\nKind regards,\nCamuntelia.",
-        "mailSubject": "Your request was issued",
+        "mailBody": "",
+        "mailSubject": "",
         "requestedDocumentDescription": "",
-        "riskLevel": "green",
-        "risks": "<<OBJECT_VARIABLE_VALUE>>",
-        "risks._listSize": "0",
-        "score": "97",
-        "uiBaseUrl": ""
+        "riskLevel": "yellow",
+        "risks": "Irregular And Possibly Lack Of Income, Not Trustworthy",
+        "risks._listSize": "2",
+        "score": "93",
+        "uiBaseUrl": "http://example.com/"
       },
       "flowNodeInstances": [
         {
-          "id": "SendTask_SendPolicy:8f17009d-a006-11ec-b9ad-0242ac120002",
-          "name": "Send confirmation",
-          "startDate": "2023-09-17T14:25:58.477+0000",
-          "endDate": "2023-09-17T14:25:58.478+0000"
+          "id": "dbccb7b1-a005-11ec-b9ad-0242ac120002",
+          "name": "BusinessRuleTask_CheckApplicationAutomatically",
+          "startDate": "2023-10-18T01:56:15.455+0000",
+          "endDate": "2023-10-18T01:56:15.463+0000"
         },
         {
-          "id": "ExclusiveGatewayPruefung:8f163d43-a006-11ec-b9ad-0242ac120002",
-          "name": "Risk?",
-          "startDate": "2023-09-17T14:25:58.476+0000",
-          "endDate": "2023-09-17T14:25:58.476+0000"
+          "id": "ServiceTask_0orgm7r:dbcc698d-a005-11ec-b9ad-0242ac120002",
+          "name": "ServiceTask_0orgm7r",
+          "startDate": "2023-10-18T01:56:15.453+0000",
+          "endDate": "2023-10-18T01:56:15.455+0000"
         },
         {
-          "id": "ServiceTask_0tixwo5:8f15a0ed-a006-11ec-b9ad-0242ac120002",
-          "name": "Get credit score",
-          "startDate": "2023-09-17T14:25:58.476+0000",
-          "endDate": "2023-09-17T14:25:58.476+0000"
+          "id": "ExclusiveGatewayPruefung:dbcdf047-a005-11ec-b9ad-0242ac120002",
+          "name": "ExclusiveGatewayPruefung",
+          "startDate": "2023-10-18T01:56:15.463+0000",
+          "endDate": "2023-10-18T01:56:15.463+0000"
         },
         {
-          "id": "EndEvent_ApplicationIssued:8f1775d8-a006-11ec-b9ad-0242ac120002",
-          "name": "Application  issued",
-          "startDate": "2023-09-17T14:25:58.478+0000",
-          "endDate": "2023-09-17T14:25:58.478+0000"
+          "id": "StartEvent_1:dbcb3106-a005-11ec-b9ad-0242ac120002",
+          "name": "StartEvent_1",
+          "startDate": "2023-10-18T01:56:15.445+0000",
+          "endDate": "2023-10-18T01:56:15.446+0000"
         },
         {
-          "id": "8f15a0f1-a006-11ec-b9ad-0242ac120002",
-          "name": "Check application automatically",
-          "startDate": "2023-09-17T14:25:58.476+0000",
-          "endDate": "2023-09-17T14:25:58.476+0000"
+          "id": "dbcdf049-a005-11ec-b9ad-0242ac120002",
+          "name": "UserTask_DecideOnApplication",
+          "startDate": "2023-10-18T01:56:15.465+0000",
+          "endDate": null
+        }
+      ]
+    },
+    {
+      "processDefinitionKey": "customer_onboarding_en",
+      "processDefinitionId": "customer_onboarding_en:1:da435926-a005-11ec-b9ad-0242ac120002",
+      "processInstanceId": "dbac374f-a005-11ec-b9ad-0242ac120002",
+      "counts": {
+        "incidents": 0,
+        "openIncidents": 0,
+        "userTasks": 1
+      },
+      "flowNodeDurations": {
+        "BusinessRuleTask_CheckApplicationAutomatically": {
+          "name": null,
+          "value": 7
+        },
+        "StartEvent_1": {
+          "name": null,
+          "value": 1
+        },
+        "UserTask_DecideOnApplication": {
+          "name": null,
+          "value": 1410692171
+        },
+        "ServiceTask_0orgm7r": {
+          "name": null,
+          "value": 2
+        },
+        "ExclusiveGatewayPruefung": {
+          "name": null,
+          "value": 0
+        }
+      },
+      "businessKey": "A-129",
+      "startDate": "2023-11-02T17:37:37.242+0000",
+      "endDate": null,
+      "duration": 58210191,
+      "engineName": "zeebe-record",
+      "tenantId": "<default>",
+      "variables": {
+        "applicantName": "Gentle Driver",
+        "application": "<<OBJECT_VARIABLE_VALUE>>",
+        "application.applicant.age": "47.0",
+        "application.applicant.birthday": "1.6364195624E11",
+        "application.applicant.email": "trashcan@camunda.org",
+        "application.applicant.gender": "Mann",
+        "application.applicant.name": "Gentle Driver",
+        "application.applicant.score": "82.0",
+        "application.applicationNumber": "A-6983",
+        "application.category": "Premium Package",
+        "application.contractNumber": "",
+        "application.corporation": "Camundanzia",
+        "application.employment": "Salaried",
+        "application.premium": "0,00 €",
+        "application.premiumInCent": "0.0",
+        "application.priceIndication": "320,00 €",
+        "application.priceIndicationInCent": "32000.0",
+        "application.product": "super cool product",
+        "applicationNumber": "A-6983",
+        "approved": "",
+        "category": "",
+        "corporation": "Camundanzia",
+        "documentReferenceId": "",
+        "mailBody": "",
+        "mailSubject": "",
+        "requestedDocumentDescription": "",
+        "riskLevel": "yellow",
+        "risks": "Too Low Income",
+        "risks._listSize": "1",
+        "score": "82",
+        "uiBaseUrl": "http://example.com/"
+      },
+      "flowNodeInstances": [
+        {
+          "id": "ServiceTask_0orgm7r:dbad6fe7-a005-11ec-b9ad-0242ac120002",
+          "name": "ServiceTask_0orgm7r",
+          "startDate": "2023-10-18T01:56:15.250+0000",
+          "endDate": "2023-10-18T01:56:15.252+0000"
         },
         {
-          "id": "StartEvent_1:8f150595-a006-11ec-b9ad-0242ac120002",
-          "name": "Application received",
-          "startDate": "2023-09-17T14:25:58.475+0000",
-          "endDate": "2023-09-17T14:25:58.475+0000"
+          "id": "StartEvent_1:dbac5e70-a005-11ec-b9ad-0242ac120002",
+          "name": "StartEvent_1",
+          "startDate": "2023-10-18T01:56:15.243+0000",
+          "endDate": "2023-10-18T01:56:15.244+0000"
         },
         {
-          "id": "ServiceTask_DeliverPolicy:8f163d44-a006-11ec-b9ad-0242ac120002",
-          "name": "Deliver confirmation",
-          "startDate": "2023-09-17T14:25:58.476+0000",
-          "endDate": "2023-09-17T14:25:58.476+0000"
+          "id": "ExclusiveGatewayPruefung:dbaef69f-a005-11ec-b9ad-0242ac120002",
+          "name": "ExclusiveGatewayPruefung",
+          "startDate": "2023-10-18T01:56:15.260+0000",
+          "endDate": "2023-10-18T01:56:15.260+0000"
+        },
+        {
+          "id": "dbade51b-a005-11ec-b9ad-0242ac120002",
+          "name": "BusinessRuleTask_CheckApplicationAutomatically",
+          "startDate": "2023-10-18T01:56:15.253+0000",
+          "endDate": "2023-10-18T01:56:15.260+0000"
+        },
+        {
+          "id": "dbaef6a1-a005-11ec-b9ad-0242ac120002",
+          "name": "UserTask_DecideOnApplication",
+          "startDate": "2023-10-18T01:56:15.262+0000",
+          "endDate": null
         }
       ]
     }
