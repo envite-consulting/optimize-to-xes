@@ -2,9 +2,15 @@ package de.envite.greenbpm.optimzetoxes
 
 import de.envite.greenbpm.optimzetoxes.optimizeexport.usecase.`in`.OptimizeDataQuery
 import de.envite.greenbpm.optimzetoxes.xesmapping.toXes
+import org.deckfour.xes.model.XLog
+import org.deckfour.xes.out.XSerializer
+import org.deckfour.xes.out.XesXmlSerializer
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import java.io.BufferedOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 @SpringBootApplication
 class OptimizeToXesApplication(
@@ -13,7 +19,21 @@ class OptimizeToXesApplication(
 	override fun run(vararg args: String?) {
 		val result = optimizeDataQuery.fetchData()
 		log().info("Fetch data {}", result)
-		log().info("Converting raw data to XES: {}", result.toXes())
+		val xes = result.toXes()
+		log().info("Converting raw data to XES: {}", xes)
+		writeXESLogToXML(xes, "xes-output.xml")
+	}
+
+	@Throws(Exception::class)
+	private fun writeXESLogToXML(log: XLog, filename: String) {
+		log().trace("Writing XES to file {}", filename)
+		val file = File(filename)
+		val fileOutput = FileOutputStream(file)
+		val bufferedOutput = BufferedOutputStream(fileOutput)
+		val logSerializer: XSerializer = XesXmlSerializer()
+		logSerializer.serialize(log, bufferedOutput)
+		bufferedOutput.close()
+		fileOutput.close()
 	}
 }
 

@@ -32,9 +32,17 @@
 		<dependency>
 			<groupId>org.deckfour</groupId>
 			<artifactId>openxes</artifactId>
-			<version>2.27</version>
+			<version>1.1</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/OpenXES-20211004.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/resources/OpenXES.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.deckfour</groupId>
+			<artifactId>spex</artifactId>
+			<version>1.0-RC2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/Spex.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -56,6 +64,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>32.1.3-jre</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -63,6 +77,10 @@
 				<exclusion>
 					<groupId>org.mockito</groupId>
 					<artifactId>mockito-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.mockito</groupId>
+					<artifactId>mockito-junit-jupiter</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
