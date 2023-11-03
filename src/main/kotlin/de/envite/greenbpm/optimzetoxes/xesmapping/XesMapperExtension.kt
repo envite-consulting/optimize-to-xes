@@ -3,6 +3,7 @@ package de.envite.greenbpm.optimzetoxes.xesmapping
 import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.FlowNodeInstance
 import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.OptimizeData
 import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.ProcessInstance
+import org.deckfour.xes.classification.XEventAttributeClassifier
 import org.deckfour.xes.factory.XFactoryRegistry
 import org.deckfour.xes.model.XAttributeMap
 import org.deckfour.xes.model.XEvent
@@ -11,8 +12,11 @@ import org.deckfour.xes.model.XTrace
 import org.deckfour.xes.model.impl.XAttributeLiteralImpl
 import org.deckfour.xes.model.impl.XAttributeMapImpl
 import java.text.SimpleDateFormat
+import java.time.OffsetDateTime
 import java.util.*
 
+private const val CONCEPT_NAME = "concept:name"
+private const val ORG_GROUP = "org:group"
 
 private val factory = XFactoryRegistry.instance().currentDefault()
 
@@ -21,6 +25,9 @@ fun OptimizeData.toXes(): XLog {
     val log = factory.createLog()
     val logAttributes: XAttributeMap = XAttributeMapImpl()
     log.attributes = logAttributes
+
+    log.classifiers.add(XEventAttributeClassifier(CONCEPT_NAME, CONCEPT_NAME))
+    log.classifiers.add(XEventAttributeClassifier(ORG_GROUP, ORG_GROUP))
 
     data[0].let {
         val processDefinitionKeyAttribute = XAttributeLiteralImpl("processDefinitionKey", data[0].processDefinitionKey)
@@ -38,31 +45,60 @@ fun OptimizeData.toXes(): XLog {
 
 fun ProcessInstance.toXes(): XTrace {
     val trace = factory.createTrace()
-    val events = flowNodeInstances.map { it.toXes() }
-    // TODO: Add variables
+    trace.attributes[CONCEPT_NAME] = factory.createAttributeLiteral(CONCEPT_NAME, processInstanceId, null)
+    val events = flowNodeInstances.map { it.toXes(processInstanceId, variables) }
     trace.addAll(events.flatten())
     return trace
 }
 
-fun FlowNodeInstance.toXes(): List<XEvent> {
-    val startEvent: XEvent = createEvent(name, Lifecyle.start, startDate)
-    val endEvent: XEvent? = endDate?.let { createEvent(name, Lifecyle.complete, it) }
+fun FlowNodeInstance.toXes(processInstanceId: String, variables: Map<String, String>): List<XEvent> {
+    // TODO: Add variables to each event
+    val startEvent: XEvent = createEvent(name, processInstanceId, variables, Lifecycle.START, startDate)
+    val endEvent: XEvent? = endDate?.let { createEvent(name, processInstanceId, variables, Lifecycle.COMPLETE, it) }
     val result = mutableListOf(startEvent)
     endEvent?.let { result.add(it) }
     return result
 }
 
-private enum class Lifecyle {
-    start, complete
-}
+private enum class Lifecycle { START, COMPLETE }
 
-private fun createEvent(name: String, type: Lifecyle, timestamp: String): XEvent {
+private fun createEvent(name: String, processInstanceId: String, variables: Map<String, String>, type: Lifecycle, timestamp: String): XEvent {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     val date: Date = dateFormat.parse(timestamp)
 
     val event = factory.createEvent()
-    event.attributes["concept:name"] = factory.createAttributeLiteral("concept:name", name, null)
-    event.attributes["lifecycle:transition"] = factory.createAttributeLiteral("lifecycle:transition", type.name, null)
+    addVariablesToEvent(event, variables)
+
+    event.attributes[CONCEPT_NAME] = factory.createAttributeLiteral(CONCEPT_NAME, name, null)
+    event.attributes[ORG_GROUP] = factory.createAttributeLiteral(ORG_GROUP, processInstanceId, null)
+    event.attributes["lifecycle:transition"] = factory.createAttributeLiteral("lifecycle:transition", type.name.lowercase(), null)
     event.attributes["time:timestamp"] = factory.createAttributeTimestamp("time:timestamp", date.time, null)
     return event
 }
+
+
+private fun addVariablesToEvent(event: XEvent, variables: Map<String, String>) {
+    variables.keys
+        .filter { key -> variables[key] != "<<OBJECT_VARIABLE_VALUE>>" }
+        .filter { key -> variables[key]!!.isNotEmpty() }
+        .forEach { key ->
+            val value: String = variables[key]!!
+
+            if (value.toBigDecimalOrNull() != null) {
+                event.attributes[key] = factory.createAttributeBoolean(key, value.toBoolean(), null)
+            } else if (value.toDoubleOrNull() != null) {
+                event.attributes[key] = factory.createAttributeContinuous(key, value.toDouble(), null)
+            }  else if (value.toLongOrNull() != null) {
+                event.attributes[key] = factory.createAttributeDiscrete(key, value.toLong(), null)
+            }   else if (value.toDateOrNull() != null) {
+                event.attributes[key] = factory.createAttributeTimestamp(key, value.toDate(), null)
+            } else {
+                event.attributes[key] = factory.createAttributeLiteral(key, value.lines().joinToString(""), null)
+            }
+    }
+}
+
+fun String.toDateOrNull(): Long? = runCatching { OffsetDateTime.parse(this).toEpochSecond() }.getOrNull()
+
+
+fun String.toDate(): Long = this.toDateOrNull()!!
