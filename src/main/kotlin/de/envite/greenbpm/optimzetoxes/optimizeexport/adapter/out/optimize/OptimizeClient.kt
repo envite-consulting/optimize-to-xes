@@ -3,7 +3,6 @@ package de.envite.greenbpm.optimzetoxes.optimizeexport.adapter.out.optimize
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpHeaders
 import org.springframework.web.reactive.function.client.WebClient
 
 
@@ -11,13 +10,14 @@ import org.springframework.web.reactive.function.client.WebClient
 @EnableConfigurationProperties(OptimizeClientProperties::class)
 private class OptimizeClient {
 
-    // TODO: Get token by e.g. using Spring Boot OAuth Client
-    // But keep in mind it should work with Optimize in a C7 set-up as well
-    @Bean
-    fun configureWebClient(optimizeClientProperties: OptimizeClientProperties): WebClient {
-        return WebClient.builder()
+    @Bean("optimize-client")
+    fun configureOptimizeWebClient(optimizeClientProperties: OptimizeClientProperties): WebClient =
+        WebClient.builder()
             .baseUrl(optimizeClientProperties.baseUrl!!)
-            .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer ${optimizeClientProperties.bearerToken}")
             .build()
-    }
+    @Bean("login-client")
+    fun configureLoginWebClient(optimizeClientProperties: OptimizeClientProperties): WebClient =
+        WebClient.builder()
+            .baseUrl(optimizeClientProperties.tokenBaseUrl!!)
+            .build()
 }

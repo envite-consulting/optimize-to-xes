@@ -37,18 +37,23 @@ class OptimizeRawDataQueryServiceTest {
     }
 
     private lateinit var classUnderTest: OptimizeRawDataQueryService
-    private val optimizeClientProperties: OptimizeClientProperties = OptimizeClientProperties().apply { reportId = "1" }
+    private val optimizeClientProperties: OptimizeClientProperties = OptimizeClientProperties().apply {
+        reportId = "1"
+        clientId = "7"
+        clientSecret = "secret"
+    }
 
     @BeforeEach
     fun setUpClassUnderTest() {
         val webclient = WebClient.builder()
             .baseUrl("http://localhost:${mockWebServer.port}")
             .build()
-        classUnderTest = OptimizeRawDataQueryService(webclient, optimizeClientProperties)
+        classUnderTest = OptimizeRawDataQueryService(webclient, webclient, optimizeClientProperties)
     }
 
     @Test
     fun should_query_data() {
+        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-token-response.json")
         enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-export-response.json")
 
         val expectedProcessDefinitionKey = "customer_onboarding_en"
@@ -68,7 +73,18 @@ class OptimizeRawDataQueryServiceTest {
     }
 
     @Test
+    fun should_throw_on_missing_token() {
+        mockWebServer.enqueue(MockResponse().setResponseCode(404))
+
+        val exception = shouldThrow<DataQueryException> {
+            classUnderTest.queryData()
+        }
+        exception.message shouldContain "Could not fetch Bearer Token from optimize"
+    }
+
+    @Test
     fun should_throw_on_404() {
+        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-token-response.json")
         mockWebServer.enqueue(MockResponse().setResponseCode(404))
 
         val exception = shouldThrow<DataQueryException> {
@@ -79,6 +95,7 @@ class OptimizeRawDataQueryServiceTest {
 
     @Test
     fun should_throw_on_500() {
+        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-token-response.json")
         mockWebServer.enqueue(MockResponse().setResponseCode(500))
 
         val exception = shouldThrow<DataQueryException> {

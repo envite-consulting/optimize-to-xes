@@ -4,8 +4,10 @@ spring:
 
 optimize:
   baseUrl: <optimize-base-url>
-  bearerToken: <token>
   reportId: <report-id>
+  client-id: <client_id>
+  client-secret: <client_secret>
+  token-base-url: https://login.cloud.camunda.io/oauth/token
 
 xes-mapping:
   filename: <xes-result-filename-or-path>.xml

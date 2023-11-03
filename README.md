@@ -11,7 +11,6 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
   * [🚫 Limitations](#-limitations)
   * [🚀🔜 Coming Soon... 🌟🎉👀](#-coming-soon-)
 * [🚀 Getting Started](#-getting-started)
-  * [Obtaining a Bearer Token from Camunda Optimize](#obtaining-a-bearer-token-from-camunda-optimize)
   * [Configuring `application.yaml`](#configuring-applicationyaml)
 
 # ✨Features
@@ -44,27 +43,13 @@ in Camunda Optimize, make sure it contains only a single process definition.
 
 # 🚀 Getting Started
 
-## Obtaining a Bearer Token from Camunda Optimize
-
-To acquire a Bearer Token from Camunda Optimize, you can use the following curl command:
-
-```shell
-curl --request POST \
-  --url https://login.cloud.camunda.io/oauth/token \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "client_id": "<client_id>",
-    "client_secret": "<client_secret>",
-    "audience
-```
-
 ## Configuring `application.yaml`
 
 To set up your configuration in `application.yaml`, follow these steps:
 
-1. Add the Bearer Token you obtained earlier.
-2. Include the Optimize base URL.
-3. Specify the Raw Data Report ID.
+1. Include the Optimize base URL.
+2. Specify the Raw Data Report ID.
+3. Add the Client ID and Secret.
 4. Specify the filename for the resulting XML (optionally, along with its path).
 
 Once you've completed these configurations, you'll be prepared to retrieve the data and convert it to XES format 🎉
