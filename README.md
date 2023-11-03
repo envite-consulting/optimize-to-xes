@@ -36,6 +36,8 @@ For our Java-powered adventures, we especially use this [OpenXES](http://code.de
 🛑 Currently, you can only transform one process definition at a time. Therefore, when setting up your raw data report 
 in Camunda Optimize, make sure it contains only a single process definition.
 
+🚫 You can use the application only with Java 21.
+
 ## 🚀🔜 Coming Soon... 🌟🎉👀
 
 ![Optimize CCR PPM Cycle](./assets/ppm-cycle.png)
