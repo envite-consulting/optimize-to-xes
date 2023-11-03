@@ -55,17 +55,27 @@ fun ProcessInstance.toXes(): XTrace {
 }
 
 fun FlowNodeInstance.toXes(processInstanceId: String, variables: Map<String, String>): List<XEvent> {
-    // TODO: If startDate and endDate are equal we violate XES
-    val startEvent: XEvent = createEvent(name, processInstanceId, variables, Lifecycle.START, startDate)
-    val endEvent: XEvent? = endDate?.let { createEvent(name, processInstanceId, variables, Lifecycle.COMPLETE, it) }
-    val result = mutableListOf(startEvent)
-    endEvent?.let { result.add(it) }
+    val result: MutableList<XEvent> = mutableListOf()
+    if (startDate != endDate) {
+        val startEvent: XEvent = createEvent(name, processInstanceId, variables, Lifecycle.START, startDate)
+        val endEvent: XEvent? = endDate?.let { createEvent(name, processInstanceId, variables, Lifecycle.COMPLETE, it) }
+        result.add(startEvent)
+        endEvent?.let { result.add(it) }
+    } else {
+        result.add(createEvent(name, processInstanceId, variables, Lifecycle.UNKNOWN, startDate))
+    }
     return result
 }
 
-private enum class Lifecycle { START, COMPLETE }
+private enum class Lifecycle { START, COMPLETE, UNKNOWN }
 
-private fun createEvent(name: String, processInstanceId: String, variables: Map<String, String>, type: Lifecycle, timestamp: String): XEvent {
+private fun createEvent(
+    name: String,
+    processInstanceId: String,
+    variables: Map<String, String>,
+    type: Lifecycle,
+    timestamp: String
+): XEvent {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     val date: Date = dateFormat.parse(timestamp)
 
@@ -74,7 +84,8 @@ private fun createEvent(name: String, processInstanceId: String, variables: Map<
 
     event.attributes[CONCEPT_NAME] = factory.createAttributeLiteral(CONCEPT_NAME, name, null)
     event.attributes[ORG_GROUP] = factory.createAttributeLiteral(ORG_GROUP, processInstanceId, null)
-    event.attributes["lifecycle:transition"] = factory.createAttributeLiteral("lifecycle:transition", type.name.lowercase(), null)
+    event.attributes["lifecycle:transition"] =
+        factory.createAttributeLiteral("lifecycle:transition", type.name.lowercase(), null)
     event.attributes["time:timestamp"] = factory.createAttributeTimestamp("time:timestamp", date.time, null)
     return event
 }
@@ -91,14 +102,14 @@ private fun addVariablesToEvent(event: XEvent, variables: Map<String, String>) {
                 event.attributes[key] = factory.createAttributeBoolean(key, value.toBoolean(), null)
             } else if (value.toDoubleOrNull() != null) {
                 event.attributes[key] = factory.createAttributeContinuous(key, value.toDouble(), null)
-            }  else if (value.toLongOrNull() != null) {
+            } else if (value.toLongOrNull() != null) {
                 event.attributes[key] = factory.createAttributeDiscrete(key, value.toLong(), null)
-            }   else if (value.toDateOrNull() != null) {
+            } else if (value.toDateOrNull() != null) {
                 event.attributes[key] = factory.createAttributeTimestamp(key, value.toDate(), null)
             } else {
                 event.attributes[key] = factory.createAttributeLiteral(key, value.lines().joinToString(""), null)
             }
-    }
+        }
 }
 
 fun String.toDateOrNull(): Long? = runCatching { OffsetDateTime.parse(this).toEpochSecond() }.getOrNull()
