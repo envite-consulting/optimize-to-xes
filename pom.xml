@@ -18,7 +18,16 @@
 	<properties>
 		<java.version>17</java.version>
 		<kotlin.version>1.9.10</kotlin.version>
+		<maven-release-plugin.version>3.0.1</maven-release-plugin.version>
+		<project.scm.url>https://github.com/envite-consulting/optimize-to-xes.git</project.scm.url>
 	</properties>
+
+	<scm>
+		<connection>scm:git:${project.scm.url}</connection>
+		<developerConnection>scm:git:${project.scm.url}</developerConnection>
+		<url>${project.scm.url}</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<distributionManagement>
 		<repository>
@@ -147,6 +156,16 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<tag>v${releaseVersion}</tag>
+					<scmReleaseCommitComment>Release v${releaseVersion}</scmReleaseCommitComment>
+					<scmDevelopmentCommitComment>prepare for next development iteration</scmDevelopmentCommitComment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
