@@ -12,4 +12,5 @@ internal data class OptimizeClientProperties(
     var clientId: String? = null,
     var clientSecret: String? = null,
     var tokenBaseUrl: String? = null,
+    var bearerToken: String? = null,
 )

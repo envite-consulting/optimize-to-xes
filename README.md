@@ -10,7 +10,10 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
   * [📊 XES - eXtensible Event Stream](#-xes---extensible-event-stream)
   * [🚀🔜 Coming Soon... 🌟🎉👀](#-coming-soon-)
 * [🚀 Getting Started](#-getting-started)
+  * [Execute native-image](#execute-native-image)
   * [Configuring `application.yaml`](#configuring-applicationyaml)
+* [👨‍💻 Develop Guide](#-develop-guide)
+  * [Build Native Image](#build-native-image)
 
 # ✨Features
 
@@ -37,6 +40,23 @@ For our Java-powered adventures, we especially use this [OpenXES](http://code.de
 
 # 🚀 Getting Started
 
+## Execute native-image
+
+You can simply download the latest native-image from the [releases here](https://github.com/envite-consulting/optimize-to-xes/releases/latest/download/optimize-to-xes) and
+execute it with the following options:
+
+```shell
+./optimize-to-xes \
+  --optimize.base-url='optimize_base_url' \
+  --optimize.report-id='report_id' \
+  --optimize.client-id='client_id' \
+  --optimize.client-secret='client_secret' \
+  --xes-mapping.filename='<filename-or-path>.xml'
+```
+
+If you want to provide a static Bearer Token you could ignore `client-id` and `client-secret` and 
+add `bearer-token` instead.
+
 ## Configuring `application.yaml`
 
 To set up your configuration in `application.yaml`, follow these steps:
@@ -45,6 +65,9 @@ To set up your configuration in `application.yaml`, follow these steps:
 2. Specify the Raw Data Report ID.
 3. Add the Client ID and Secret.
 4. *Optionally:* Specify the base bath for the resulting XML(s).
+
+If you want to provide a static Bearer Token you could ignore `client-id` and `client-secret` and  
+add `bearer-token` instead.
 
 Once you've completed these configurations, you'll be prepared to retrieve the data and convert it to XES format 🎉
 
@@ -58,4 +81,14 @@ To install and start the commandline runner, use the command below:
 
 ```shell
 $ ./mvnw spring-boot:run
+```
+
+# 👨‍💻 Develop Guide
+
+## Build Native Image
+
+To build the native image run the following command:
+
+```shell
+./mvnw clean native:compile -Pnative
 ```
