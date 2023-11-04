@@ -1,5 +1,6 @@
 package de.envite.greenbpm.optimzetoxes.optimizeexport.adapter.out.optimize
 
+import de.envite.greenbpm.optimzetoxes.optimizeexport.adapter.out.optimize.token.OptimizeBearerTokenService
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldContainOnly
@@ -8,13 +9,15 @@ import io.kotest.matchers.collections.shouldNotHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.springframework.web.reactive.function.client.WebClient
 
 class OptimizeRawDataQueryServiceTest {
 
@@ -43,17 +46,18 @@ class OptimizeRawDataQueryServiceTest {
         clientSecret = "secret"
     }
 
+    private val optimizeBearerTokenServiceMock: OptimizeBearerTokenService = mockk()
+
     @BeforeEach
     fun setUpClassUnderTest() {
-        val webclient = WebClient.builder()
-            .baseUrl("http://localhost:${mockWebServer.port}")
-            .build()
-        classUnderTest = OptimizeRawDataQueryService(webclient, webclient, optimizeClientProperties)
+        optimizeClientProperties.baseUrl = "http://localhost:${mockWebServer.port}"
+        optimizeClientProperties.bearerToken = null
+        classUnderTest = OptimizeRawDataQueryService(optimizeClientProperties, optimizeBearerTokenServiceMock)
     }
 
     @Test
     fun should_query_data() {
-        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-token-response.json")
+        every { optimizeBearerTokenServiceMock.queryToken() } returns "token"
         enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-export-response.json")
 
         val expectedProcessDefinitionKey = "customer_onboarding_en"
@@ -73,18 +77,22 @@ class OptimizeRawDataQueryServiceTest {
     }
 
     @Test
-    fun should_throw_on_missing_token() {
-        mockWebServer.enqueue(MockResponse().setResponseCode(404))
+    fun should_query_data_with_static_token() {
+        optimizeClientProperties.bearerToken = "token"
+        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-export-response.json")
 
-        val exception = shouldThrow<DataQueryException> {
-            classUnderTest.queryData()
-        }
-        exception.message shouldContain "Could not fetch Bearer Token from optimize"
+        val expectedProcessDefinitionKey = "customer_onboarding_en"
+
+        val result = classUnderTest.queryData()
+
+        result shouldNotBe null
+        result.data shouldHaveSize  2
+        verify(exactly = 0) { optimizeBearerTokenServiceMock.queryToken() }
     }
 
     @Test
     fun should_throw_on_404() {
-        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-token-response.json")
+        every { optimizeBearerTokenServiceMock.queryToken() } returns "token"
         mockWebServer.enqueue(MockResponse().setResponseCode(404))
 
         val exception = shouldThrow<DataQueryException> {
@@ -95,7 +103,7 @@ class OptimizeRawDataQueryServiceTest {
 
     @Test
     fun should_throw_on_500() {
-        enqueueToMock(mockWebServer, "/optimize-response/optimize-sample-token-response.json")
+        every { optimizeBearerTokenServiceMock.queryToken() } returns "token"
         mockWebServer.enqueue(MockResponse().setResponseCode(500))
 
         val exception = shouldThrow<DataQueryException> {
