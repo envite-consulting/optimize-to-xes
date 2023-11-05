@@ -83,12 +83,35 @@ To install and start the commandline runner, use the command below:
 $ ./mvnw spring-boot:run
 ```
 
-# 👨‍💻 Develop Guide
+# 👨‍💻 Developer's Guide
 
-## Build Native Image
+## Building a Native Image
 
-To build the native image run the following command:
+Usually, running `./mvnw clean native:compile -Pnative` should be all you need to create the native image. 🚀
+
+However, there's a little twist 🌀 – due to some reflection magic happening in the OpenXES Library, we'll need to 
+catch and pass all those reflections to the native image building process. It's like adding a touch of wizardry to 
+your development journey! 🧙‍♂️✨🏗️
 
 ```shell
+# Build the native image
+./mvnw clean native:compile -Pnative
+
+# Find all reflection usages: A native-image folder will be places in the root of the project.  
+java -Dspring.aot.enabled=true \
+    -agentlib:native-image-agent=config-output-dir=./native-image \
+    -Doptimize.base-url='<base_url>' \
+    -Doptimize.reportId='<report_id' \
+    -Doptimize.clientId='<client_id>' \
+    -Doptimize.clientSecret='client_secret' \
+    -Dxes-mapping.filename='xes-output.xml' \
+    -jar target/optimize-to-xes-<version>.jar
+    
+# Copy all the contents from the generated config folder to src/main/resources/META-INF/native-image
+cp -a ./native-image src/main/resources/META-INF/
+
+# Build the native image again with the extended information on the relfection
 ./mvnw clean native:compile -Pnative
 ```
+
+Source of this advanced build is [Stackoverflow](https://stackoverflow.com/a/76751098).
