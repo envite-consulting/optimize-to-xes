@@ -36,22 +36,26 @@
 		</repository>
 	</distributionManagement>
 
+	<repositories>
+		<repository>
+			<id>local</id>
+			<url>file://${project.basedir}/src/main/resources/openxes-dependencies</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.deckfour</groupId>
 			<artifactId>openxes</artifactId>
 			<version>1.1</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/OpenXES.jar</systemPath>
 		</dependency>
 
 		<dependency>
 			<groupId>org.deckfour</groupId>
 			<artifactId>spex</artifactId>
 			<version>1.0-RC2</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/Spex.jar</systemPath>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
