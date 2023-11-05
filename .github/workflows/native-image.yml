@@ -1,0 +1,34 @@
+name: GraalVM Native Image builds
+
+on:
+  workflow_dispatch:
+    inputs:
+      TAG:
+        description: 'The tag to be built'
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Optimize-to-xes on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '21'
+          distribution: 'graalvm'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          native-image-job-reports: 'true'
+      - name: Build native-image
+        run: mvn -Pnative native:compile
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: optimize-to-xes-${{ matrix.os }}
+          path: target/optimize-to-xes*

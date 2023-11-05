@@ -42,7 +42,7 @@ For our Java-powered adventures, we especially use this [OpenXES](http://code.de
 
 ## Execute native-image
 
-You can simply download the latest native-image from the [releases here](https://github.com/envite-consulting/optimize-to-xes/releases/latest/download/optimize-to-xes) and
+You can simply download the latest native-image from the [releases here](https://github.com/envite-consulting/optimize-to-xes/releases/latest) and
 execute it with the following options:
 
 ```shell
@@ -51,7 +51,7 @@ execute it with the following options:
   --optimize.report-id='report_id' \
   --optimize.client-id='client_id' \
   --optimize.client-secret='client_secret' \
-  --xes-mapping.filename='<filename-or-path>.xml'
+  --xes-mapping.base-path='<optional-path-to-output-dir>'
 ```
 
 If you want to provide a static Bearer Token you could ignore `client-id` and `client-secret` and 
@@ -104,7 +104,7 @@ java -Dspring.aot.enabled=true \
     -Doptimize.reportId='<report_id' \
     -Doptimize.clientId='<client_id>' \
     -Doptimize.clientSecret='client_secret' \
-    -Dxes-mapping.filename='xes-output.xml' \
+    -Dxes-mapping.base-path='target' \
     -jar target/optimize-to-xes-<version>.jar
     
 # Copy all the contents from the generated config folder to src/main/resources/META-INF/native-image
