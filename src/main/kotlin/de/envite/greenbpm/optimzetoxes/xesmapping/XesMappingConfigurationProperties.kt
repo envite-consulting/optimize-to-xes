@@ -4,5 +4,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties("xes-mapping")
 class XesMappingConfigurationProperties(
-    val filename: String,
+    val basePath: String?,
 )

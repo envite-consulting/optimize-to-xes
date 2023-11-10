@@ -5,13 +5,11 @@ import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.OptimizeData
 import de.envite.greenbpm.optimzetoxes.optimizeexport.domain.model.ProcessInstance
 import de.envite.greenbpm.optimzetoxes.optimizeexport.usecase.`in`.OptimizeDataQuery
 import de.envite.greenbpm.optimzetoxes.xesmapping.XesMappingConfigurationProperties
-import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class OptimizeToXesApplicationTest {
 
@@ -20,22 +18,11 @@ class OptimizeToXesApplicationTest {
     private lateinit var classUnderTest: OptimizeToXesApplication
 
     @Nested
-    inner class ExceptionHandling {
-
-        @Test
-        fun should_throw_if_no_filename_provided() {
-            assertThrows<IllegalArgumentException> {
-                OptimizeToXesApplication(optimizeDataQueryMock, XesMappingConfigurationProperties(""))
-            }.message shouldBe "You must provide a filename for the resulting XML which ends with '.xml'"
-        }
-    }
-
-    @Nested
     inner class ETL {
 
         @BeforeEach
         fun setUp() {
-            classUnderTest = OptimizeToXesApplication(optimizeDataQueryMock, XesMappingConfigurationProperties("xes-output.xml"))
+            classUnderTest = OptimizeToXesApplication(optimizeDataQueryMock, XesMappingConfigurationProperties("target"))
         }
 
         @Test

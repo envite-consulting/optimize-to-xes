@@ -21,29 +21,37 @@ private const val ORG_GROUP = "org:group"
 
 private val factory = XFactoryRegistry.instance().currentDefault()
 
-// TODO: Restriction: Single Process-Definition
-fun OptimizeData.toXes(logger: Logger? = null): XLog {
-    logger?.debug("Converting JSON Data to XES")
-
+private fun createBaseLog(): XLog {
     val log = factory.createLog()
     val logAttributes: XAttributeMap = XAttributeMapImpl()
     log.attributes = logAttributes
 
     log.classifiers.add(XEventAttributeClassifier(CONCEPT_NAME, CONCEPT_NAME))
     log.classifiers.add(XEventAttributeClassifier(ORG_GROUP, ORG_GROUP))
-
-    data[0].let {
-        val processDefinitionKeyAttribute = XAttributeLiteralImpl("processDefinitionKey", data[0].processDefinitionKey)
-        val processDefinitionIdAttribute = XAttributeLiteralImpl("processDefinitionId", data[0].processDefinitionId)
-
-        log.globalTraceAttributes.add(processDefinitionKeyAttribute)
-        log.globalTraceAttributes.add(processDefinitionIdAttribute)
-    }
-
-    val traces = data.map { it.toXes() }
-
-    log.addAll(traces)
     return log
+}
+
+fun OptimizeData.toXes(logger: Logger? = null): List<XesDefinition> {
+    logger?.debug("Converting JSON Data to XES")
+
+    return data
+        .groupBy { it.processDefinitionId }
+        .filter { (_, processInstances) -> processInstances.isNotEmpty() }
+        .mapValues { (processDefinitionId, processInstances) ->
+            logger?.trace("Converting process definition $processDefinitionId to XES")
+            val log = createBaseLog()
+
+            val processDefinitionIdAttribute = XAttributeLiteralImpl("processDefinitionId", processDefinitionId)
+            val processDefinitionKeyAttribute = XAttributeLiteralImpl("processDefinitionKey", data[0].processDefinitionKey)
+
+            log.globalTraceAttributes.add(processDefinitionKeyAttribute)
+            log.globalTraceAttributes.add(processDefinitionIdAttribute)
+
+            val traces = processInstances.map { it.toXes() }
+
+            log.addAll(traces)
+            XesDefinition(processDefinitionId, log)
+        }.values.toList()
 }
 
 fun ProcessInstance.toXes(): XTrace {

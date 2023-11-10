@@ -8,12 +8,21 @@ import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
+data class XesDefinition(
+    val processDefinitionId: String,
+    val log: XLog,
+)
+
 @Throws(Exception::class)
-fun writeXESLogToXML(log: XLog, filename: String, logger: Logger? = null) {
+fun XesDefinition.toXMLFile(basePath: String?, logger: Logger? = null) {
+    val filename = "${basePath?.plus("/") ?: ""}$processDefinitionId.xml"
+
     logger?.debug("Writing XES to file {}", filename)
+
     val fileOutput = FileOutputStream(File(filename))
     val bufferedOutput = BufferedOutputStream(fileOutput)
     val logSerializer: XSerializer = XesXmlSerializer()
+
     logSerializer.serialize(log, bufferedOutput)
     bufferedOutput.close()
     fileOutput.close()

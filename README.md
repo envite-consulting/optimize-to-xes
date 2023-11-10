@@ -8,7 +8,6 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
 * [✨Features](#features)
   * [📤 Camunda Optimize to XES](#-camunda-optimize-to-xes)
   * [📊 XES - eXtensible Event Stream](#-xes---extensible-event-stream)
-  * [🚫 Limitations](#-limitations)
   * [🚀🔜 Coming Soon... 🌟🎉👀](#-coming-soon-)
 * [🚀 Getting Started](#-getting-started)
   * [Configuring `application.yaml`](#configuring-applicationyaml)
@@ -18,7 +17,9 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
 ## 📤 Camunda Optimize to XES
 
 Here's the scoop on this project: It's your ticket to export your raw process data from Camunda Optimize using the 
-mighty [Data Export API](https://docs.camunda.io/optimize/apis-tools/optimize-api/report/get-data-export/). 🚀 
+mighty [Data Export API](https://docs.camunda.io/optimize/apis-tools/optimize-api/report/get-data-export/). 🚀  
+🔍 For the smoothest experience, consider applying a filter to show only completed instances. 🌟 This helps streamline your view and focus on what's done! ✅🚀
+
 Afterward, we work our magic to transform it into the fantastic world of [XES](#-xes---extensible-event-stream). 🪄✨
 
 ## 📊 XES - eXtensible Event Stream
@@ -29,13 +30,6 @@ format is a go-to choice for process mining, allowing us to save and share event
 treasure map for uncovering insights in the world of processes and workflows! 🗺️
 
 For our Java-powered adventures, we especially use this [OpenXES](http://code.deckfour.org/xes/) implementation. 🧑‍💻
-
-## 🚫 Limitations
-
-🛑 Currently, you can only transform one process definition at a time. Therefore, when setting up your raw data report 
-in Camunda Optimize, make sure it contains only a single process definition.
-
-🚫 You can use the application only with Java 21.
 
 ## 🚀🔜 Coming Soon... 🌟🎉👀
 
@@ -50,7 +44,7 @@ To set up your configuration in `application.yaml`, follow these steps:
 1. Include the Optimize base URL.
 2. Specify the Raw Data Report ID.
 3. Add the Client ID and Secret.
-4. Specify the filename for the resulting XML (optionally, along with its path).
+4. *Optionally:* Specify the base bath for the resulting XML(s).
 
 Once you've completed these configurations, you'll be prepared to retrieve the data and convert it to XES format 🎉
 
