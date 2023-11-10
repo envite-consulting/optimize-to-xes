@@ -15,7 +15,8 @@ data class XesDefinition(
 
 @Throws(Exception::class)
 fun XesDefinition.toXMLFile(basePath: String?, logger: Logger? = null) {
-    val filename = "${basePath?.plus("/") ?: ""}$processDefinitionId.xml"
+    val prefix = if (!basePath.isNullOrEmpty()) "$basePath/" else ""
+    val filename = "$prefix$processDefinitionId.xml"
 
     logger?.debug("Writing XES to file {}", filename)
 

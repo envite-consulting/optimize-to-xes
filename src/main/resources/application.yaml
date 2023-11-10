@@ -10,4 +10,5 @@ optimize:
   token-base-url: https://login.cloud.camunda.io/oauth/token
 
 xes-mapping:
-  base-path: <xes-result-filename-or-path>.xml
+  # Optionally: Specify the base bath for the resulting XML(s).
+  base-path:
