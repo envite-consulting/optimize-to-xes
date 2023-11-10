@@ -8,7 +8,7 @@ data class ProcessInstance(
     var processDefinitionKey: String = "",
     var processDefinitionId: String = "",
     var processInstanceId: String = "",
-    var businessKey: String = "",
+    var businessKey: String? = null,
     var variables: Map<String, String> = mapOf(),
     var flowNodeInstances: List<FlowNodeInstance> = listOf(),
 )

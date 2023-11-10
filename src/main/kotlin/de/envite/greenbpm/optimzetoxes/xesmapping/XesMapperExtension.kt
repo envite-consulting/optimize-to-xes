@@ -49,7 +49,9 @@ fun OptimizeData.toXes(logger: Logger? = null): XLog {
 fun ProcessInstance.toXes(): XTrace {
     val trace = factory.createTrace()
     trace.attributes[CONCEPT_NAME] = factory.createAttributeLiteral(CONCEPT_NAME, processInstanceId, null)
-    val events = flowNodeInstances.map { it.toXes(processInstanceId, variables) }
+    val events = flowNodeInstances
+        .sortedBy { it.startDate }
+        .map { it.toXes(processInstanceId, variables) }
     trace.addAll(events.flatten())
     return trace
 }
@@ -89,7 +91,6 @@ private fun createEvent(
     event.attributes["time:timestamp"] = factory.createAttributeTimestamp("time:timestamp", date.time, null)
     return event
 }
-
 
 private fun addVariablesToEvent(event: XEvent, variables: Map<String, String>) {
     variables.keys
