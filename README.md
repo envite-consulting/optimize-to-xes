@@ -8,12 +8,11 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
 * [✨Features](#features)
   * [📤 Camunda Optimize to XES](#-camunda-optimize-to-xes)
   * [📊 XES - eXtensible Event Stream](#-xes---extensible-event-stream)
-  * [🚀🔜 Coming Soon... 🌟🎉👀](#-coming-soon-)
 * [🚀 Getting Started](#-getting-started)
   * [Execute native-image](#execute-native-image)
   * [Configuring `application.yaml`](#configuring-applicationyaml)
-* [👨‍💻 Develop Guide](#-develop-guide)
-  * [Build Native Image](#build-native-image)
+* [👨‍💻 Developer's Guide](#-developers-guide)
+  * [Building a Native Image](#building-a-native-image)
 
 # ✨Features
 
@@ -21,9 +20,14 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
 
 Here's the scoop on this project: It's your ticket to export your raw process data from Camunda Optimize using the 
 mighty [Data Export API](https://docs.camunda.io/optimize/apis-tools/optimize-api/report/get-data-export/). 🚀  
-🔍 For the smoothest experience, consider applying a filter to show only completed instances. 🌟 This helps streamline your view and focus on what's done! ✅🚀
+🔍 For the smoothest experience, consider applying a filter to show only completed instances. 🌟 This helps streamline 
+your view and focus on what's done! ✅🚀
 
 Afterward, we work our magic to transform it into the fantastic world of [XES](#-xes---extensible-event-stream). 🪄✨
+
+🔮 Dive into the world of possibilities! Utilize XES for Predictive Process Monitoring, or easily import your XES file 
+into a Process Mining tool like [Disco](https://fluxicon.com/disco/) 🚀. Uncover insights and let the magic of data 
+unfold! 🌟💼
 
 ## 📊 XES - eXtensible Event Stream
 
@@ -33,10 +37,6 @@ format is a go-to choice for process mining, allowing us to save and share event
 treasure map for uncovering insights in the world of processes and workflows! 🗺️
 
 For our Java-powered adventures, we especially use this [OpenXES](http://code.deckfour.org/xes/) implementation. 🧑‍💻
-
-## 🚀🔜 Coming Soon... 🌟🎉👀
-
-![Optimize CCR PPM Cycle](./assets/ppm-cycle.png)
 
 # 🚀 Getting Started
 
@@ -87,6 +87,9 @@ $ ./mvnw spring-boot:run
 
 ## Building a Native Image
 
+> **🚀📚 Requirements:**
+> * Java 21
+
 Usually, running `./mvnw clean native:compile -Pnative` should be all you need to create the native image. 🚀
 
 However, there's a little twist 🌀 – due to some reflection magic happening in the OpenXES Library, we'll need to 
@@ -99,19 +102,14 @@ your development journey! 🧙‍♂️✨🏗️
 
 # Find all reflection usages: A native-image folder will be places in the root of the project.  
 java -Dspring.aot.enabled=true \
-    -agentlib:native-image-agent=config-output-dir=./native-image \
+    -agentlib:native-image-agent=config-output-dir=./src/main/resources/META-INF/native-image \
     -Doptimize.base-url='<base_url>' \
-    -Doptimize.reportId='<report_id' \
-    -Doptimize.clientId='<client_id>' \
-    -Doptimize.clientSecret='client_secret' \
+    -Doptimize.report-d='<report_id' \
+    -Doptimize.client-id='<client_id>' \
+    -Doptimize.client-secret='client_secret' \
     -Dxes-mapping.base-path='target' \
     -jar target/optimize-to-xes-<version>.jar
-    
-# Copy all the contents from the generated config folder to src/main/resources/META-INF/native-image
-cp -a ./native-image src/main/resources/META-INF/
 
 # Build the native image again with the extended information on the relfection
 ./mvnw clean native:compile -Pnative
 ```
-
-Source of this advanced build is [Stackoverflow](https://stackoverflow.com/a/76751098).
