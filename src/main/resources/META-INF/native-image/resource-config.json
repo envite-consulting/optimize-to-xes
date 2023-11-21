@@ -1,17 +1,11 @@
 {
   "resources":{
   "includes":[{
-    "pattern":"\\QMETA-INF/native/libnetty_resolver_dns_native_macos.dylib\\E"
-  }, {
-    "pattern":"\\QMETA-INF/native/libnetty_resolver_dns_native_macos.jnilib\\E"
-  }, {
-    "pattern":"\\QMETA-INF/native/libnetty_resolver_dns_native_macos_aarch_64.dylib\\E"
-  }, {
-    "pattern":"\\QMETA-INF/native/libnetty_resolver_dns_native_macos_aarch_64.jnilib\\E"
-  }, {
     "pattern":"\\QMETA-INF/services/ch.qos.logback.classic.spi.Configurator\\E"
   }, {
     "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.net.spi.InetAddressResolverProvider\\E"
   }, {
     "pattern":"\\QMETA-INF/services/java.net.spi.URLStreamHandlerProvider\\E"
   }, {
@@ -65,6 +59,8 @@
   }, {
     "pattern":"\\Qconfig/application.yml\\E"
   }, {
+    "pattern":"\\Qjndi.properties\\E"
+  }, {
     "pattern":"\\Qlogback-spring.groovy\\E"
   }, {
     "pattern":"\\Qlogback-spring.xml\\E"
@@ -88,8 +84,6 @@
     "pattern":"\\Qorg/springframework/http/codec/CodecConfigurer.properties\\E"
   }, {
     "pattern":"\\Qspring.properties\\E"
-  }, {
-    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfc.nrm\\E"
   }, {
     "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfkc.nrm\\E"
   }, {
