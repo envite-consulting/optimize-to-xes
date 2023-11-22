@@ -16,7 +16,10 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: 'v${{ inputs.TAG }}'
 
       - uses: graalvm/setup-graalvm@v1
         with:
