@@ -1,5 +1,9 @@
 # Optimize to XES
 
+[![Continuous Integration](https://github.com/envite-consulting/optimize-to-xes/actions/workflows/continuous-integration.yml/badge.svg?branch=main)](https://github.com/envite-consulting/optimize-to-xes/actions/workflows/continuous-integration.yml)
+[![Publish package to GitHub Packages](https://github.com/envite-consulting/optimize-to-xes/actions/workflows/maven-publish.yml/badge.svg?branch=main)](https://github.com/envite-consulting/optimize-to-xes/actions/workflows/maven-publish.yml)
+[![GraalVM Native Image builds](https://github.com/envite-consulting/optimize-to-xes/actions/workflows/native-image.yml/badge.svg?branch=main)](https://github.com/envite-consulting/optimize-to-xes/actions/workflows/native-image.yml)
+
 Export [raw data from Camunda Optimize](https://docs.camunda.io/optimize/apis-tools/optimize-api/report/get-data-export/) 
 and convert it to [XES](https://xes-standard.org/) for Predictive Process Monitoring
 
