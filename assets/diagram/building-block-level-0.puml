@@ -1,0 +1,29 @@
+@startuml
+
+component "optimize-to-xes" <<Maven Module>> {
+
+    component "Optimize Export" <<Package>> as Optimize
+
+    package "XES Mapping" {
+
+        component XesDefinition <<Extension function>>
+        component XesMapperExtension <<Extension function>>
+    }
+
+    component OptimizeToXesApplication <<CommandLineRunner>>
+
+    OptimizeToXesApplication --> Optimize : use
+
+    OptimizeToXesApplication --> XesMapperExtension : use
+    OptimizeToXesApplication --> XesDefinition : use
+
+    portout "Camunda 8 Optimize API" as optimizeRestApi
+    portout "Deckfour Openxes"
+
+    Optimize --> optimizeRestApi
+
+    XesDefinition --> "Deckfour Openxes"
+    XesMapperExtension --> "Deckfour Openxes"
+}
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+component "Optimize Export" <<Package>> {
+
+    portin " " as inputPort
+
+    ' Usecase
+    component OptimizeDataQuery <<Usecase: In>>
+    component RawDataQuery <<Usecase: Out>>
+
+    ' Domain
+    ' Domain Model
+    component OptimizeData <<Domain Model>>
+    component ProcessInstance <<Domain Model>>
+    component FlowNodeInstance <<Domain Model>>
+
+    OptimizeData <-- ProcessInstance
+    ProcessInstance <-- FlowNodeInstance
+
+    ' Domain Service
+    component DownloadService <<Domain Service>>
+
+    OptimizeDataQuery <-- DownloadService : implements
+    DownloadService -> OptimizeData : use
+    DownloadService -> RawDataQuery : use
+
+    ' Adapter
+    component OptimizeRawDataQueryService <<Adapter>>
+    component OptimizeBearerTokenService <<Adapter>>
+
+    inputPort --> OptimizeDataQuery
+
+    RawDataQuery <-- OptimizeRawDataQueryService : implements
+    OptimizeRawDataQueryService --> OptimizeBearerTokenService : use
+
+    portout "Camunda 8 Optimize API" as optimizeRestApi
+
+    OptimizeRawDataQueryService --> optimizeRestApi
+    OptimizeBearerTokenService --> optimizeRestApi
+}
+
+@enduml

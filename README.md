@@ -13,6 +13,9 @@ and convert it to [XES](https://xes-standard.org/) for Predictive Process Monito
   * [Configuring `application.yaml`](#configuring-applicationyaml)
 * [👨‍💻 Developer's Guide](#-developers-guide)
   * [Building a Native Image](#building-a-native-image)
+  * [🏗Building Blocks](#building-blocks)
+    * [Level 0](#level-0)
+    * [Level 1: Optimize Export](#level-1-optimize-export)
 
 # ✨Features
 
@@ -110,6 +113,41 @@ java -Dspring.aot.enabled=true \
     -Dxes-mapping.base-path='target' \
     -jar target/optimize-to-xes-<version>.jar
 
-# Build the native image again with the extended information on the relfection
+# Build the native image again with the extended information on the reelection
 ./mvnw clean native:compile -Pnative
 ```
+
+## 🏗Building Blocks
+
+The building block view shows the static decomposition of the system into building blocks as well as their dependencies.
+
+### Level 0
+
+Level 0 is the white box description of the overall system together with black box descriptions of all contained building blocks.
+
+![Building Block View Level 0](assets/diagram/image/building-block-level-0.svg)
+
+| Element                  | Description                                                                                       |
+|--------------------------|---------------------------------------------------------------------------------------------------|
+| OptimizeToXesApplication | Main Application which will be executed as Command Line Runner.                                   |
+| Optimize                 | See [Level 1: Optimize Export](#level-1-optimize-export).                                         |
+| XesDefinition            | Extension function providing extensions for the `XesDefinition` like an export to XML.            |
+| XesMapperExtension       | Extension function to map the Domain model of [Optimize Export](#level-1-optimize-export) to XES. |
+
+### Level 1: Optimize Export
+
+Level 1 zooms into the `Optimize Export` building blocks of level 0. Thus, it contains the white box description of selected building blocks of level 0, together with black box descriptions of their internal building blocks on handling the export of the data from Camunda 8 Optimize. 
+
+![Building Block View Level 1](assets/diagram/image/building-block-level-1.svg)
+
+
+| Element                     | Description                                                                                         |
+|-----------------------------|-----------------------------------------------------------------------------------------------------|
+| OptimizeDataQuery           | Input port allowing to query for an export.                                                         |
+| DownloadService             | Implementation of the input port.                                                                   |
+| OptimizeData                | Domain Model representing the list of `ProcessInstances`.                                           |
+| ProcessInstance             | Domain Model representing a historic process instance with all its `FlowNodeInstances`              |
+| FlowNodeInstance            | Domain Model representing a single flow node in a process instance.                                 |
+| RawDataQuery                | Output port allow an abstract way to query for an Optimize export (Dependency Inversion Principal). |
+| OptimizeRawDataQueryService | Implementation of the output port.                                                                  |
+| OptimizeBearerTokenService  | Support Component querying for a Bearer Token wich is used to query the data.                       |
