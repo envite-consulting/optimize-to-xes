@@ -10,7 +10,7 @@
 
 	<groupId>de.envite.greenbpm</groupId>
 	<artifactId>optimize-to-xes</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>optimize-to-xes</name>
 	<description>Convert the Camunda Optimize ML Export to XES</description>
 
@@ -32,7 +32,7 @@
 		<connection>scm:git:${project.scm.url}</connection>
 		<developerConnection>scm:git:${project.scm.url}</developerConnection>
 		<url>${project.scm.url}</url>
-		<tag>HEAD</tag>
+		<tag>v1.0.2</tag>
 	</scm>
 
 	<distributionManagement>
