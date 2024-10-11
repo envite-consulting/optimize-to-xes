@@ -3,6 +3,9 @@
   "name":"[B"
 },
 {
+  "name":"[Lcom.fasterxml.jackson.databind.deser.BeanDeserializerModifier;"
+},
+{
   "name":"[Lcom.fasterxml.jackson.databind.deser.Deserializers;"
 },
 {
@@ -12,31 +15,13 @@
   "name":"[Lcom.fasterxml.jackson.databind.deser.ValueInstantiators;"
 },
 {
+  "name":"[Lcom.fasterxml.jackson.databind.ser.BeanSerializerModifier;"
+},
+{
   "name":"[Lcom.fasterxml.jackson.databind.ser.Serializers;"
 },
 {
-  "name":"[Ljava.io.Serializable;"
-},
-{
-  "name":"[Ljava.lang.CharSequence;"
-},
-{
-  "name":"[Ljava.lang.Comparable;"
-},
-{
-  "name":"[Ljava.lang.Object;"
-},
-{
   "name":"[Ljava.lang.String;"
-},
-{
-  "name":"[Ljava.lang.constant.Constable;"
-},
-{
-  "name":"[Ljava.lang.constant.ConstantDesc;"
-},
-{
-  "name":"[Lorg.springframework.boot.context.config.ConfigDataLocation;"
 },
 {
   "name":"[Lorg.springframework.util.ConcurrentReferenceHashMap$Segment;"
@@ -132,19 +117,10 @@
   "methods":[{"name":"addAbstractTypeMapping","parameterTypes":["java.lang.Class","java.lang.Class"] }, {"name":"addDeserializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.JsonDeserializer"] }, {"name":"addKeyDeserializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.KeyDeserializer"] }, {"name":"addKeySerializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.JsonSerializer"] }, {"name":"addSerializer","parameterTypes":["com.fasterxml.jackson.databind.JsonSerializer"] }, {"name":"addSerializer","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.JsonSerializer"] }, {"name":"addValueInstantiator","parameterTypes":["java.lang.Class","com.fasterxml.jackson.databind.deser.ValueInstantiator"] }, {"name":"getModuleName","parameterTypes":[] }, {"name":"getTypeId","parameterTypes":[] }, {"name":"registerSubtypes","parameterTypes":["java.util.Collection"] }, {"name":"registerSubtypes","parameterTypes":["com.fasterxml.jackson.databind.jsontype.NamedType[]"] }, {"name":"registerSubtypes","parameterTypes":["java.lang.Class[]"] }, {"name":"setAbstractTypes","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver"] }, {"name":"setDeserializerModifier","parameterTypes":["com.fasterxml.jackson.databind.deser.BeanDeserializerModifier"] }, {"name":"setDeserializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleDeserializers"] }, {"name":"setKeyDeserializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleKeyDeserializers"] }, {"name":"setKeySerializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleSerializers"] }, {"name":"setMixInAnnotation","parameterTypes":["java.lang.Class","java.lang.Class"] }, {"name":"setSerializerModifier","parameterTypes":["com.fasterxml.jackson.databind.ser.BeanSerializerModifier"] }, {"name":"setSerializers","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleSerializers"] }, {"name":"setValueInstantiators","parameterTypes":["com.fasterxml.jackson.databind.module.SimpleValueInstantiators"] }, {"name":"version","parameterTypes":[] }]
 },
 {
-  "name":"com.fasterxml.jackson.dataformat.cbor$CBORFactory"
-},
-{
   "name":"com.fasterxml.jackson.dataformat.cbor.CBORFactory"
 },
 {
-  "name":"com.fasterxml.jackson.dataformat.smile$SmileFactory"
-},
-{
   "name":"com.fasterxml.jackson.dataformat.smile.SmileFactory"
-},
-{
-  "name":"com.fasterxml.jackson.dataformat.xml$XmlMapper"
 },
 {
   "name":"com.fasterxml.jackson.dataformat.xml.XmlMapper"
@@ -158,30 +134,18 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"com.fasterxml.jackson.module.kotlin$KotlinModule"
-},
-{
   "name":"com.fasterxml.jackson.module.kotlin.KotlinModule"
 },
 {
   "name":"com.fasterxml.jackson.module.paramnames.ParameterNamesModule",
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"setupModule","parameterTypes":["com.fasterxml.jackson.databind.Module$SetupContext"] }]
-},
-{
-  "name":"com.google.gson$Gson"
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"setupModule","parameterTypes":["com.fasterxml.jackson.databind.Module$SetupContext"] }]
 },
 {
   "name":"com.google.gson.Gson"
 },
 {
-  "name":"com.google.protobuf$Message"
-},
-{
   "name":"com.google.protobuf.Message"
-},
-{
-  "name":"com.rometools.rome.feed$WireFeed"
 },
 {
   "name":"com.rometools.rome.feed.WireFeed"
@@ -255,13 +219,11 @@
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
   "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, {"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","int","kotlin.jvm.internal.DefaultConstructorMarker"] }, {"name":"setBaseUrl","parameterTypes":["java.lang.String"] }, {"name":"setBeanFactory","parameterTypes":["org.springframework.beans.factory.BeanFactory"] }, {"name":"setClientId","parameterTypes":["java.lang.String"] }, {"name":"setClientSecret","parameterTypes":["java.lang.String"] }, {"name":"setReportId","parameterTypes":["java.lang.String"] }, {"name":"setTokenBaseUrl","parameterTypes":["java.lang.String"] }]
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"] }, {"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String","int","kotlin.jvm.internal.DefaultConstructorMarker"] }, {"name":"setBaseUrl","parameterTypes":["java.lang.String"] }, {"name":"setClientId","parameterTypes":["java.lang.String"] }, {"name":"setClientSecret","parameterTypes":["java.lang.String"] }, {"name":"setReportId","parameterTypes":["java.lang.String"] }, {"name":"setTokenBaseUrl","parameterTypes":["java.lang.String"] }]
 },
 {
   "name":"de.envite.greenbpm.optimzetoxes.optimizeexport.adapter.out.optimize.OptimizeClientProperties$$SpringCGLIB$$0",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "fields":[{"name":"CGLIB$FACTORY_DATA"}],
+  "fields":[{"name":"CGLIB$CALLBACK_FILTER"}, {"name":"CGLIB$FACTORY_DATA"}],
   "methods":[{"name":"CGLIB$SET_STATIC_CALLBACKS","parameterTypes":["org.springframework.cglib.proxy.Callback[]"] }, {"name":"CGLIB$SET_THREAD_CALLBACKS","parameterTypes":["org.springframework.cglib.proxy.Callback[]"] }]
 },
 {
@@ -453,7 +415,7 @@
   "fields":[{"name":"expirationFuture"}]
 },
 {
-  "name":"io.netty.resolver.dns.DnsNameResolver$1"
+  "name":"io.netty.resolver.dns.DnsNameResolver$2"
 },
 {
   "name":"io.netty.resolver.dns.DnsNameResolver$3"
@@ -485,6 +447,10 @@
 {
   "name":"io.netty.util.ReferenceCountUtil",
   "queryAllDeclaredMethods":true
+},
+{
+  "name":"io.netty.util.ResourceLeakDetector$DefaultResourceLeak",
+  "fields":[{"name":"droppedRecords"}, {"name":"head"}]
 },
 {
   "name":"io.netty.util.concurrent.DefaultPromise",
@@ -523,28 +489,13 @@
   "fields":[{"name":"producerLimit"}]
 },
 {
-  "name":"io.netty5.buffer$Buffer"
-},
-{
   "name":"io.netty5.buffer.Buffer"
-},
-{
-  "name":"io.reactivex.rxjava3.core$Flowable"
 },
 {
   "name":"io.reactivex.rxjava3.core.Flowable"
 },
 {
-  "name":"io.smallrye.mutiny$Multi"
-},
-{
   "name":"io.smallrye.mutiny.Multi"
-},
-{
-  "name":"jakarta.inject$Provider"
-},
-{
-  "name":"jakarta.inject$Qualifier"
 },
 {
   "name":"jakarta.inject.Provider"
@@ -553,22 +504,17 @@
   "name":"jakarta.inject.Qualifier"
 },
 {
-  "name":"jakarta.json.bind$Jsonb"
-},
-{
   "name":"jakarta.json.bind.Jsonb"
-},
-{
-  "name":"jakarta.validation$Validator"
 },
 {
   "name":"jakarta.validation.Validator"
 },
 {
-  "name":"jakarta.xml.bind$Binder"
+  "name":"jakarta.xml.bind.Binder"
 },
 {
-  "name":"jakarta.xml.bind.Binder"
+  "name":"java.io.Console",
+  "methods":[{"name":"isTerminal","parameterTypes":[] }]
 },
 {
   "name":"java.io.FileDescriptor"
@@ -734,7 +680,7 @@
   "methods":[{"name":"update","parameterTypes":["java.nio.ByteBuffer"] }]
 },
 {
-  "name":"javax.money$MonetaryAmount"
+  "name":"javax.inject.Qualifier"
 },
 {
   "name":"javax.money.MonetaryAmount"
@@ -754,6 +700,9 @@
 },
 {
   "name":"javax.smartcardio.CardPermission"
+},
+{
+  "name":"jdk.crac.management.CRaCMXBean"
 },
 {
   "name":"jdk.internal.loader.ClassLoaders$AppClassLoader",
@@ -792,6 +741,9 @@
   "queryAllDeclaredMethods":true
 },
 {
+  "name":"kotlin.jvm.JvmInline"
+},
+{
   "name":"kotlin.jvm.internal.DefaultConstructorMarker"
 },
 {
@@ -802,37 +754,19 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"kotlinx.coroutines.reactor$MonoKt"
-},
-{
   "name":"kotlinx.coroutines.reactor.MonoKt"
-},
-{
-  "name":"kotlinx.serialization.cbor$Cbor"
 },
 {
   "name":"kotlinx.serialization.cbor.Cbor"
 },
 {
-  "name":"kotlinx.serialization.json$Json"
-},
-{
   "name":"kotlinx.serialization.json.Json"
-},
-{
-  "name":"kotlinx.serialization.protobuf$ProtoBuf"
 },
 {
   "name":"kotlinx.serialization.protobuf.ProtoBuf"
 },
 {
-  "name":"org.apache.hc.client5.http.impl.async$CloseableHttpAsyncClient"
-},
-{
   "name":"org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient"
-},
-{
-  "name":"org.apache.logging.log4j.core.impl$Log4jContextFactory"
 },
 {
   "name":"org.apache.logging.log4j.core.impl.Log4jContextFactory"
@@ -844,6 +778,9 @@
   "name":"org.apache.logging.slf4j.SLF4JProvider"
 },
 {
+  "name":"org.crac.Core"
+},
+{
   "name":"org.deckfour.xes.model.buffered.XAttributeMapBufferedImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -852,28 +789,19 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.eclipse.core.runtime$FileLocator"
-},
-{
   "name":"org.eclipse.core.runtime.FileLocator"
-},
-{
-  "name":"org.eclipse.jetty.client$HttpClient"
 },
 {
   "name":"org.eclipse.jetty.client.HttpClient"
 },
 {
-  "name":"org.glassfish.jersey.servlet$ServletContainer"
-},
-{
   "name":"org.glassfish.jersey.servlet.ServletContainer"
 },
 {
-  "name":"org.jboss.logging$Logger"
+  "name":"org.jboss.logging.Logger"
 },
 {
-  "name":"org.jboss.logging.Logger"
+  "name":"org.reactivestreams.Publisher"
 },
 {
   "name":"org.slf4j.Logger"
@@ -1059,6 +987,10 @@
   "queryAllDeclaredMethods":true
 },
 {
+  "name":"org.springframework.boot.autoconfigure.condition.ConditionalOnThreading",
+  "queryAllDeclaredMethods":true
+},
+{
   "name":"org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration",
   "queryAllDeclaredMethods":true
 },
@@ -1168,6 +1100,17 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"org.springframework.boot.autoconfigure.reactor.ReactorAutoConfiguration",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.springframework.boot.autoconfigure.reactor.ReactorProperties"] }]
+},
+{
+  "name":"org.springframework.boot.autoconfigure.reactor.ReactorProperties",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"org.springframework.boot.autoconfigure.reactor.netty.ReactorNettyConfigurations$ReactorResourceFactoryConfiguration",
   "queryAllDeclaredMethods":true
 },
@@ -1213,7 +1156,8 @@
 },
 {
   "name":"org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration",
-  "queryAllDeclaredMethods":true
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.springframework.boot.autoconfigure.ssl.SslProperties"] }]
 },
 {
   "name":"org.springframework.boot.autoconfigure.ssl.SslProperties",
@@ -1232,7 +1176,37 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$SimpleAsyncTaskExecutorBuilderConfiguration",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.springframework.boot.autoconfigure.task.TaskExecutionProperties","org.springframework.beans.factory.ObjectProvider","org.springframework.beans.factory.ObjectProvider"] }]
+},
+{
+  "name":"org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$TaskExecutorBuilderConfiguration",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$TaskExecutorConfiguration",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$ThreadPoolTaskExecutorBuilderConfiguration",
+  "queryAllDeclaredMethods":true
+},
+{
   "name":"org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.springframework.boot.autoconfigure.task.TaskSchedulingConfigurations$SimpleAsyncTaskSchedulerBuilderConfiguration",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":["org.springframework.boot.autoconfigure.task.TaskSchedulingProperties","org.springframework.beans.factory.ObjectProvider"] }]
+},
+{
+  "name":"org.springframework.boot.autoconfigure.task.TaskSchedulingConfigurations$TaskSchedulerBuilderConfiguration",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.springframework.boot.autoconfigure.task.TaskSchedulingConfigurations$ThreadPoolTaskSchedulerBuilderConfiguration",
   "queryAllDeclaredMethods":true
 },
 {
@@ -1240,6 +1214,10 @@
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.springframework.boot.autoconfigure.web.client.RestClientAutoConfiguration",
+  "queryAllDeclaredMethods":true
 },
 {
   "name":"org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration",
@@ -1390,7 +1368,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"org.springframework.boot.loader.LaunchedURLClassLoader",
+  "name":"org.springframework.boot.loader.launch.LaunchedClassLoader",
   "methods":[{"name":"clearCache","parameterTypes":[] }]
 },
 {
@@ -1410,6 +1388,10 @@
   "name":"org.springframework.boot.logging.log4j2.Log4J2LoggingSystem.Factory"
 },
 {
+  "name":"org.springframework.boot.logging.logback.ApplicationNameConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"org.springframework.boot.logging.logback.ColorConverter",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -1426,7 +1408,7 @@
   "name":"org.springframework.boot.logging.logback.LogbackLoggingSystem.Factory"
 },
 {
-  "name":"org.springframework.boot.reactor.DebugAgentEnvironmentPostProcessor",
+  "name":"org.springframework.boot.reactor.ReactorEnvironmentPostProcessor",
   "queryAllPublicConstructors":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -1588,19 +1570,10 @@
   "name":"org.springframework.web.reactive.DispatcherHandler"
 },
 {
-  "name":"org.springframework.web.servlet$DispatcherServlet"
-},
-{
   "name":"org.springframework.web.servlet.DispatcherServlet"
 },
 {
-  "name":"org.springframework.web.servlet.config.annotation$WebMvcConfigurationSupport"
-},
-{
   "name":"org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport"
-},
-{
-  "name":"org.synchronoss.cloud.nio.multipart$NioMultipartParser"
 },
 {
   "name":"org.synchronoss.cloud.nio.multipart.NioMultipartParser"
@@ -1769,13 +1742,7 @@
   "fields":[{"name":"result"}]
 },
 {
-  "name":"reactor.netty5.http.client$HttpClient"
-},
-{
   "name":"reactor.netty5.http.client.HttpClient"
-},
-{
-  "name":"reactor.tools.agent$ReactorDebugAgent"
 },
 {
   "name":"reactor.tools.agent.ReactorDebugAgent"
