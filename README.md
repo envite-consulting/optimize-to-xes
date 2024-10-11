@@ -111,7 +111,7 @@ your development journey! 🧙‍♂️✨🏗️
 java -Dspring.aot.enabled=true \
     -agentlib:native-image-agent=config-output-dir=./src/main/resources/META-INF/native-image \
     -Doptimize.base-url='<base_url>' \
-    -Doptimize.report-d='<report_id' \
+    -Doptimize.report-id='<report_id' \
     -Doptimize.client-id='<client_id>' \
     -Doptimize.client-secret='client_secret' \
     -Dxes-mapping.base-path='target' \
