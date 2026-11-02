@@ -20,7 +20,7 @@
 		<deckfour.openxes.version>1.1</deckfour.openxes.version>
 		<deckfour.spex.version>1.0-RC2</deckfour.spex.version>
 		<maven-release-plugin.version>3.1.1</maven-release-plugin.version>
-		<guava.verion>33.3.1-jre</guava.verion>
+		<guava.verion>33.7.1-jre</guava.verion>
 		<okhttp3.mockwebserver.version>4.12.0</okhttp3.mockwebserver.version>
 		<kotest.runner.junit5.version>5.9.1</kotest.runner.junit5.version>
 		<mockk.version>1.13.13</mockk.version>
